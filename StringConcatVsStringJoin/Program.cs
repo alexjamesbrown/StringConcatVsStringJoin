@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 
 namespace StringConcatVsStringJoin
 {
@@ -45,8 +46,16 @@ namespace StringConcatVsStringJoin
 
             joinStopWatch.Stop();
 
+            var stringbuilderStopWatch = Stopwatch.StartNew();
+            for (var i = 0; i < numberOfTimesToRun; i++)
+            new StringBuilder().Append(space).Append(the).Append(quick).Append(brown).Append(fox).Append(jumps).Append(over).Append(the).Append(lazy).Append(dog);
+            
+            stringbuilderStopWatch.Stop();
+
+
             Console.WriteLine("string.join - {0}", joinStopWatch.ElapsedMilliseconds);
             Console.WriteLine("string.concat- {0}", concatStopWatch.ElapsedMilliseconds);
+            Console.WriteLine("StringBuilder.Append- {0}", stringbuilderStopWatch.ElapsedMilliseconds);
         }
     }
 }
